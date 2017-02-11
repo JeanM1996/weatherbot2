@@ -26,11 +26,12 @@ def london():
 
     count = 0
 
+    temps = []
+
     # ******** start london() ******** #
 
     # Get keys from file
     f = open(city + "Keys.txt", "r")
-
     for line in f:
         line = line.strip()
         if count == 0:
@@ -48,6 +49,14 @@ def london():
         elif count == 6:
             lng = float(line)
         count += 1
+    f.close()
+
+    # Populate temps array from file
+    f = open(city + "Temps.txt", "r")
+    for line in f:
+        line = line.strip()
+        temps.append(line)
+    f.close()
 
     # Create an instance of Twython and ForecastIO
     twitter = Twython(consumerKey, consumerKeySecret, accessToken, accessTokenSecret)
@@ -57,6 +66,7 @@ def london():
     current = weather.currently()
     summary = str(current.summary)
     temp = int(current.temperature)
+    temps.append(temp)
     feels = int(current.apparentTemperature)
 
     msg = str(time) + " - " + "It\'s " + str(temp) + "C out (feels like " + str(feels) + "C), "
@@ -64,6 +74,8 @@ def london():
     msg = msg + summary + "#London #LondonWeather"
     print(msg)
     twitter.update_status(status=msg)
+
+    # Need to write the temps to a file TODO
 
 
 def getSummary(summary):
