@@ -11,19 +11,18 @@ from twython import Twython
 
 
 def london():
-
     # Local constants
     city = "london"
 
     # Local variables
-    consumerKey       = ""      # Twitter
+    consumerKey = ""  # Twitter
     consumerKeySecret = ""
-    accessToken       = ""
+    accessToken = ""
     accessTokenSecret = ""
 
-    apiKey            = ""      # ForecastIO
-    lat               = ""
-    lng               = ""
+    apiKey = ""  # ForecastIO
+    lat = ""
+    lng = ""
 
     count = 0
 
@@ -33,9 +32,7 @@ def london():
     f = open(city + "Keys.txt", "r")
 
     for line in f:
-
         line = line.strip()
-
         if count == 0:
             consumerKey = line
         elif count == 1:
@@ -50,21 +47,143 @@ def london():
             lat = float(line)
         elif count == 6:
             lng = float(line)
-
         count += 1
 
     # Create an instance of Twython and ForecastIO
     twitter = Twython(consumerKey, consumerKeySecret, accessToken, accessTokenSecret)
     weather = forecastio.load_forecast(apiKey, lat, lng)
 
+    time = getHour(city)
     current = weather.currently()
     summary = str(current.summary)
+    temp = int(current.temperature)
+    feels = int(current.apparentTemperature)
 
-    twitter.update_status(status=summary)
+    msg = str(time) + " - " + "It\'s " + str(temp) + "C out (feels like " + str(feels) + "C), "
+    summary = getSummary(summary)
+    msg = msg + summary + "#London #LondonWeather"
+    print(msg)
+    twitter.update_status(status=msg)
+
+
+def getSummary(summary):
+    # Local constants
+
+    # Local varaibles
+
+    # ***************** start getCurrent *****************#
+
+    if summary == 'Overcast':
+        summary = "and there\'s currently an overcast. "
+
+    if summary == 'Light Snow':
+        summary = "and it\'s lightly snowing. "
+
+    if summary == 'Snow':
+        summary = "and it\'s snowing. Drive carefully! "
+
+    if summary == 'Foggy':
+        summary = "and it\'s foggy. *Fog horn* "
+
+    if summary == 'Drizzle':
+        summary = "and it\'s drizzling. "
+
+    if summary == 'Light Rain':
+        summary = "and it\'s lightly raining. "
+
+    if summary == 'Mostly Cloudy':
+        summary = "and it\'s mostly cloudy. "
+
+    if summary == 'Flurries':
+        summary = "with a few flurries. "
+
+    if summary == 'Partly Cloudy':
+        summary = "and it\'s partly cloudy. "
+
+    if summary == 'Clear':
+        summary = "and it\'s currently clear! "
+
+    if summary == 'Rain':
+        summary = "and it\'s currently raining. "
+
+    if summary == 'Heavy Snow':
+        summary = "and it\'s snowing heavily. "
+
+    if summary == 'Heavy Rain':
+        summary = "and it\'s currently heavily raining. "
+
+    if summary == 'Humid and Overcast':
+        summary = "and it\'s currently humid with an overcast. "
+
+    return summary
+
+
+def getHour(city):
+    # Local constants
+
+    # Local variables
+    now = datetime.now()
+    hour = now.hour
+
+    # ***************** start getHour ***************** #
+
+    if city == "london":
+        hour += 5
+        return str(hour) + ":00"
+
+    if hour == 0:
+        hour = "12:00 AM"
+    elif hour == 1:
+        hour = "1:00 AM"
+    elif hour == 2:
+        hour = "2:00 AM"
+    elif hour == 3:
+        hour = "3:00 AM"
+    elif hour == 4:
+        hour = "4:00 AM"
+    elif hour == 5:
+        hour = "5:00 AM"
+    elif hour == 6:
+        hour = "6:00 AM"
+    elif hour == 7:
+        hour = "7:00 AM"
+    elif hour == 8:
+        hour = "8:00 AM"
+    elif hour == 9:
+        hour = "9:00 AM"
+    elif hour == 10:
+        hour = "10:00 AM"
+    elif hour == 11:
+        hour = "11:00 AM"
+    elif hour == 12:
+        hour = "12:00 PM"
+    elif hour == 13:
+        hour = "1:00 PM"
+    elif hour == 14:
+        hour = "2:00 PM"
+    elif hour == 15:
+        hour = "3:00 PM"
+    elif hour == 16:
+        hour = "4:00 PM"
+    elif hour == 17:
+        hour = "5:00 PM"
+    elif hour == 18:
+        hour = "6:00 PM"
+    elif hour == 19:
+        hour = "7:00 PM"
+    elif hour == 20:
+        hour = "8:00 PM"
+    elif hour == 21:
+        hour = "9:00 PM"
+    elif hour == 22:
+        hour = "10:00 PM"
+    elif hour == 23:
+        hour = "11:00 PM"
+
+    return hour
 
 
 def main():
-
     # Local constants
 
     # Local variables
