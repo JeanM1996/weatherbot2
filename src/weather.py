@@ -200,6 +200,9 @@ def getSummary(summary):
     if summary == 'Humid and Overcast':
         summary = "and it\'s currently humid with an overcast. "
 
+    else:
+        summary += " @trevordavies095"
+
     return summary
 
 
