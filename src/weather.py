@@ -161,47 +161,47 @@ def getSummary(summary):
     if summary == 'Overcast':
         summary = "and there\'s currently an overcast. "
 
-    if summary == 'Light Snow':
+    elif summary == 'Light Snow':
         summary = "and it\'s lightly snowing. "
 
-    if summary == 'Snow':
+    elif summary == 'Snow':
         summary = "and it\'s snowing. Drive carefully! "
 
-    if summary == 'Foggy':
+    elif summary == 'Foggy':
         summary = "and it\'s foggy. *Fog horn* "
 
-    if summary == 'Drizzle':
+    elif summary == 'Drizzle':
         summary = "and it\'s drizzling. "
 
-    if summary == 'Light Rain':
+    elif summary == 'Light Rain':
         summary = "and it\'s lightly raining. "
 
-    if summary == 'Mostly Cloudy':
+    elif summary == 'Mostly Cloudy':
         summary = "and it\'s mostly cloudy. "
 
-    if summary == 'Flurries':
+    elif summary == 'Flurries':
         summary = "with a few flurries. "
 
-    if summary == 'Partly Cloudy':
+    elif summary == 'Partly Cloudy':
         summary = "and it\'s partly cloudy. "
 
-    if summary == 'Clear':
+    elif summary == 'Clear':
         summary = "and it\'s currently clear! "
 
-    if summary == 'Rain':
+    elif summary == 'Rain':
         summary = "and it\'s currently raining. "
 
-    if summary == 'Heavy Snow':
+    elif summary == 'Heavy Snow':
         summary = "and it\'s snowing heavily. "
 
-    if summary == 'Heavy Rain':
+    elif summary == 'Heavy Rain':
         summary = "and it\'s currently heavily raining. "
 
-    if summary == 'Humid and Overcast':
+    elif summary == 'Humid and Overcast':
         summary = "and it\'s currently humid with an overcast. "
 
     else:
-        summary += " @trevordavies095"
+        summary += " @trevordavies095 "
 
     return summary
 
