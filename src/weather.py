@@ -15,25 +15,91 @@ def london():
     city = "london"
 
     # Local variables
-    consumerKey = ""  # Twitter
+
+    # ******** start london() ******** #
+    inst = createTwitter(city)
+    twitter = inst[0]
+    weather = inst[1]
+
+    msg = getTweet(weather, city)
+    msg += "#London #LondonWeather"
+    print(msg)
+    twitter.update_status(status=msg)
+
+
+def syracuse():
+    # Local constants
+    city = "syracuse"
+
+    # Local variables
+
+    # ******** start london() ******** #
+    inst = createTwitter(city)
+    twitter = inst[0]
+    weather = inst[1]
+
+    msg = getTweet(weather, city)
+    msg += "#Syracuse #SyracuseWeather"
+    print(msg)
+    twitter.update_status(status=msg)
+
+
+def rochester():
+    # Local constants
+    city = "rochester"
+
+    # Local variables
+
+    # ******** start london() ******** #
+    inst = createTwitter(city)
+    twitter = inst[0]
+    weather = inst[1]
+
+    msg = getTweet(weather, city)
+    msg += "#Rochester #RochesterWeather"
+    print(msg)
+    twitter.update_status(status=msg)
+
+
+def buffalo():
+    # Local constants
+    city = "buffalo"
+
+    # Local variables
+
+    # ******** start london() ******** #
+    inst = createTwitter(city)
+    twitter = inst[0]
+    weather = inst[1]
+
+    msg = getTweet(weather, city)
+    msg += "#Buffalo #BuffaloWeather"
+    print(msg)
+    twitter.update_status(status=msg)
+
+
+def createTwitter(city):
+    # Local constants
+
+    # Local variable
+    consumerKey = ""    # Twitter
     consumerKeySecret = ""
     accessToken = ""
     accessTokenSecret = ""
-
     apiKey = ""  # ForecastIO
     lat = ""
     lng = ""
-
     count = 0
+    ret = []
 
-    temps = []
-
-    # ******** start london() ******** #
+    # ******** start createTwitter ******** #
 
     # Get keys from file
     f = open(city + "Keys.txt", "r")
     for line in f:
         line = line.strip()
+        if line[0] == "#":
+            continue
         if count == 0:
             consumerKey = line
         elif count == 1:
@@ -51,38 +117,38 @@ def london():
         count += 1
     f.close()
 
-    # Populate temps array from file
-    f = open(city + "Temps.txt", "r")
-    for line in f:
-        line = line.strip()
-        temps.append(line)
-    f.close()
-
     # Create an instance of Twython and ForecastIO
     twitter = Twython(consumerKey, consumerKeySecret, accessToken, accessTokenSecret)
     weather = forecastio.load_forecast(apiKey, lat, lng)
+
+    ret.append(twitter)
+    ret.append(weather)
+
+    return ret
+
+
+def getTweet(weather, city):
+    # Local constants
+
+    # Local variables
+
+    # ******** start getTweet() ******** #
 
     time = getHour(city)
     current = weather.currently()
     summary = str(current.summary)
     temp = int(current.temperature)
-    temps.append(temp)
     feels = int(current.apparentTemperature)
-
-    msg = str(time) + " - " + "It\'s " + str(temp) + "C out (feels like " + str(feels) + "C), "
     summary = getSummary(summary)
-    msg = msg + summary + "#London #LondonWeather"
-    print(msg)
-    twitter.update_status(status=msg)
 
-    # Need to write the temps to a file TODO
-    if len(temps) == 24:
-        #plot AKA DO NOT TOUCH UNTIL SOBER
+    if city == "london":
+        msg = str(time) + " - " + "It\'s " + str(temp) + "C out (feels like " + str(feels) + "C), "
     else:
-        f = open(city + "Keys.txt", "w")
-        for item in temps:
-            f.write("%s\n" % item)
-        f.close()
+        msg = str(time) + " - " + "It\'s " + str(temp) + "F out (feels like " + str(feels) + "F), "
+
+    msg += summary
+
+    return msg
 
 
 def getSummary(summary):
@@ -209,6 +275,9 @@ def main():
 
     # ******** start main() ******** #
 
+    syracuse()
+    rochester()
+    buffalo()
     london()
 
 

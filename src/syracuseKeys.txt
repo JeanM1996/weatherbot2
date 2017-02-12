@@ -1,0 +1,14 @@
+# Twitter consumer key
+I63sgERMcAIg9HklhuXXlGWmx
+# Twitter consumer secret
+gjLTrIxAkpJNiLljP43NKKLoPSEUN52Ot11XFhhjIKNw4BwMbU
+# Twitter access token
+4916715947-SO79Yh4AvuEGIhrKhiOUp0HLgjqE6iLWXMlZXA2
+# Twitter access token secret
+a6IdAjHjzD7URQox2kzInegOzwJEmgLWQDsBDEFM06xDJ
+# ForecastIO API key
+731da0fc6c9df1a3f85515e8599ff5a6
+# City latitude
+43.0500
+# City longitude
+-76.1474
