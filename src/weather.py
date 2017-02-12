@@ -1,6 +1,6 @@
 """
 Name   : Loren Davies
-Project: WeatherBot2 ~ Beta
+Project: WeatherBot2
 Date   : February 11th, 2017
 """
 
@@ -33,7 +33,7 @@ def syracuse():
 
     # Local variables
 
-    # ******** start london() ******** #
+    # ******** start syracuse() ******** #
     inst = createTwitter(city)
     twitter = inst[0]
     weather = inst[1]
@@ -50,7 +50,7 @@ def rochester():
 
     # Local variables
 
-    # ******** start london() ******** #
+    # ******** start rochester() ******** #
     inst = createTwitter(city)
     twitter = inst[0]
     weather = inst[1]
@@ -67,7 +67,7 @@ def buffalo():
 
     # Local variables
 
-    # ******** start london() ******** #
+    # ******** start buffalo() ******** #
     inst = createTwitter(city)
     twitter = inst[0]
     weather = inst[1]
@@ -92,7 +92,7 @@ def createTwitter(city):
     count = 0
     ret = []
 
-    # ******** start createTwitter ******** #
+    # ******** start createTwitter() ******** #
 
     # Get keys from file
     f = open(city + "Keys.txt", "r")
@@ -156,7 +156,7 @@ def getSummary(summary):
 
     # Local varaibles
 
-    # ***************** start getCurrent *****************#
+    # ******** start getCurrent() ******** #
 
     if summary == 'Overcast':
         summary = "and there\'s currently an overcast. "
@@ -210,7 +210,7 @@ def getHour(city):
     now = datetime.now()
     hour = now.hour
 
-    # ***************** start getHour ***************** #
+    # ******** start getHour() ******** #
 
     if city == "london":
         hour += 5
