@@ -76,6 +76,13 @@ def london():
     twitter.update_status(status=msg)
 
     # Need to write the temps to a file TODO
+    if len(temps) == 24:
+        #plot AKA DO NOT TOUCH UNTIL SOBER
+    else:
+        f = open(city + "Keys.txt", "w")
+        for item in temps:
+            f.write("%s\n" % item)
+        f.close()
 
 
 def getSummary(summary):
