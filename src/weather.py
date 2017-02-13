@@ -220,7 +220,7 @@ def getHour(city):
 
     if city == "london":
         hour += 5
-        if hour > 24:
+        if hour >= 24:
             hour -= 24
         return str(hour) + ":00"
 
