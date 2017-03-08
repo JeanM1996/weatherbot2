@@ -221,6 +221,9 @@ def getSummary(summary):
     elif summary == "Possible Light Rain":
         summary = "and there\'s a possible light rain."
 
+    elif summary == "Windy":
+        summary = "and it\'s currently windy."
+
     else:
         summary += " @trevordavies095 "
 
