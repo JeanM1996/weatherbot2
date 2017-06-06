@@ -236,6 +236,12 @@ def getSummary(summary):
     elif summary == "Humid and Mostly Cloudy":
         summary = "and it\'s currently humid and mostly cloudy."
 
+    elif summary == "Rain and Breezy":
+        summary = "and it\'s currently raining and breezy."
+
+    elif summary == "Heavy Rain and Breezy":
+        summary = "and it\'s currently heavily raining and breezy."
+
     else:
         summary += " @trevordavies095 "
 
