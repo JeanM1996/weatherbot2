@@ -1,7 +1,7 @@
 """
 Name   : Loren Davies
 Project: WeatherBot2
-Date   : February 11th, 2017
+Date   : November 28th, 2017
 """
 
 # Imports
@@ -253,12 +253,12 @@ def getSummary(summary):
 
     elif summary == "Humid and Partly Cloudy":
         summary = "and it\'s currently humid and partly cloudy."
-		
-	elif summary == "Drizzle and Windy":
-		summary = "and it\'s currently windy and drizzling."
-		
-	elif summary == "Light Rain and Windy":
-		summary = "and it\'s currently windy and lightly raining."
+
+    elif summary == "Drizzle and Windy":
+        summary = "and it\'s currently windy and drizzling."
+
+    elif summary == "Light Rain and Windy":
+        summary = "and it\'s currently windy and lightly raining."
 
     elif summary == "Possible Light Snow":
         summary = "and it\'s possibly lightly snowing."
